@@ -3,10 +3,10 @@
   ids = nav-bar__btn-list-user, nav-bar__btn-create-user, nav-bar__btn-logout
 -->
 <nav class="navbar">
-  <div class="inline-flex mb-6 ml-9 navbar__btn-list-user">
+  <div class="inline-flex mb-6 ml-9 nav-bar__btn-list-user">
     <a routerLink="/users/list" class="nav-bar__btn-list-user">Listar Usuarios</a>
   </div>
-  <div class="inline-flex mx-auto w-50 navbar__btn-create-user">
+  <div class="inline-flex mx-auto w-50 nav-bar__btn-create-user">
     <a routerLink="/users/create" class="nav-bar__btn-create-user">Crear Usuario</a>
   </div>
   <div class="inline-flex pa-30 nav-bar__btn-logout danger" (click)="logout()">Cerrar Sesión</div>
