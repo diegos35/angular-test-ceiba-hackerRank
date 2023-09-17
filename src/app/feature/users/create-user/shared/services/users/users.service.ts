@@ -32,8 +32,9 @@ export class UsersService {
 
   }
 
-  deleteUserForIndex(index: number) {
+  deleteUserForIndex(index: number):Promise<any> {
     const url = `${this.apiUrl}/${index}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url).toPromise()
+    .then((response) => response);
   }
 }

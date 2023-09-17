@@ -33,13 +33,18 @@ export class ListUsersComponent implements OnInit {
     }
   }
 
-  deleteUser(index: number): void {
-    console.log(this.userList[index].id)
-    if (confirm('¿Seguro que deseas eliminar este usuario?')) {
-      this.userService.deleteUserForIndex(this.userList[index].id).subscribe(() => {
+  async deleteUser(index: number): Promise<void> {
+    try {
+      const userId = this.userList[index].id;
+      const confirmation = confirm('¿Seguro que deseas eliminar este usuario?');
+
+      if (confirmation) {
+        await this.userService.deleteUserForIndex(userId);
         this.userList.splice(index, 1); // Elimina el usuario de la lista local
         alert('Usuario eliminado correctamente');
-      });
+      }
+    } catch (error) {
+      console.error('Error al eliminar el usuario', error);
     }
   }
 
