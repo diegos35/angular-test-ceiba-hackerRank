@@ -9,7 +9,6 @@ import { LoginService } from '@feature/login/shared/services/login/login.service
   export class TokenGuard implements CanActivate {
 
     constructor(
-      private loginService: LoginService,
       private router: Router,
       ){}
 

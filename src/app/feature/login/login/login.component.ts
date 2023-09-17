@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit{
 
   async onSubmit(): Promise<void> {
     try {
-      const { email, password } = this.user;
-      const {token} = await this.loginService.login(email, password);
+      const {token} = await this.loginService.login(this.loginForm.get('email').value,this.loginForm.get('password').value);
       localStorage.setItem('token', token);
       if (localStorage.getItem('token')) {
         this.redirectUsers();
