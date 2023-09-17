@@ -14,11 +14,12 @@ import { LoginService } from '@feature/login/shared/services/login/login.service
       ){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const token = this.loginService.getToken();
+    const token = localStorage.getItem('token');
     if (token) {
       return true;
     }
     return this.router.createUrlTree(['/login']);
+    return false;
     }
 
 
