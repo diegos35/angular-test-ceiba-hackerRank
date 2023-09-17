@@ -32,16 +32,6 @@ export class LoginComponent implements OnInit{
   }
 
 
-  private initForm(): FormGroup {
-    const { required } = Validators;
-
-    return this.fb.group({
-      email: ['', [required, Validators.email]],
-      password: ['', [required, Validators.minLength(8)]],
-    });
-  }
-
-
   async onSubmit(): Promise<void> {
     try {
       const { email, password } = this.user;

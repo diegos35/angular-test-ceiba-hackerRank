@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import {  HttpClientModule } from '@angular/common/http';
 import { TokenGuard } from '@core/guard/token/token.guard';
+import { LoginService } from './shared/services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TokenGuard } from '@core/guard/token/token.guard';
     ReactiveFormsModule
   ],
   providers: [
-    TokenGuard
+    TokenGuard,
+    LoginService
   ],
 })
 export class LoginModule {}
