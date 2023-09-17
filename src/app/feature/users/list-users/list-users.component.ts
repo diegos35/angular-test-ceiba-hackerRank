@@ -17,13 +17,15 @@ export class ListUsersComponent implements OnInit {
 
   constructor(private userService: UsersService) {}
 
+
   async ngOnInit(): Promise<void> {
     try {
-      await this.loadUserList();
-    } catch (err) {
-      console.error('Error al cargar la lista de usuarios en ngOnInit', err);
+      this.userList = await this.userService.getUsers();
+    } catch (error) {
+      console.error('Error al cargar la lista de usuarios en ngOnInit', error);
     }
   }
+
 
 
   async loadUserList(): Promise<void> {

@@ -20,11 +20,15 @@ export class LoginComponent implements OnInit{
     private readonly fb: FormBuilder,
     private readonly loginService :LoginService
   ) {
+    this.loginForm =   this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    });
   }
 
 
   ngOnInit(): void {
-    this.loginForm = this.initForm();
+
   }
 
 

@@ -48,9 +48,7 @@ interface LoginResponse {
         });
     }
 
-    saveToken(token: string) {
-      localStorage.setItem('token', token);
-    }
+
 
     getToken() {
       const token = localStorage.getItem('token');
