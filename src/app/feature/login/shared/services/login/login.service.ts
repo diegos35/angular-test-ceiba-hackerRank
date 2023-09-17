@@ -25,34 +25,20 @@ interface LoginResponse {
     /**
      * El nombre de este metodo no debería ser cambiado, pero de ser necesario podrías cambiar la firma
      * */
-    login(email: string, password: string): Promise<any> {
+    async login(email: string, password: string): Promise<{ token: string }> {
       const loginData = {
         email: email,
         password: password,
       };
 
-      return this.http
+      const response = await this.http
         .post<any>(this.apiUrl, loginData)
         .toPromise()
-        .then((response) => {
-          console.log('response.token',response.token)
-          const token = response.token;
-          if (token) {
-            localStorage.setItem('token', token);
-          }
-          return response;
-        })
         .catch((error) => {
           console.error('Error en el servicio de login', error);
           throw error;
         });
-    }
-
-
-
-    getToken() {
-      const token = localStorage.getItem('token');
-      return token;
+        return response;
     }
 
 

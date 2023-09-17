@@ -35,10 +35,9 @@ export class LoginComponent implements OnInit{
   async onSubmit(): Promise<void> {
     try {
       const { email, password } = this.user;
-      const response = await this.loginService.login(email, password);
-      if (response && response.token) {
-        this.redirectUsers();
-      }
+      const {token} = await this.loginService.login(email, password);
+      localStorage.setItem('token', token);
+      this.redirectUsers();
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
     }
