@@ -9,6 +9,7 @@ import { TokenGuard } from '@core/guard/token/token.guard';
 import { LoginService } from './shared/services/login/login.service';
 import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     SharedModule,
     RouterModule,
+    CoreModule
   ],
   providers: [
-    TokenGuard,
     LoginService
   ],
 })
