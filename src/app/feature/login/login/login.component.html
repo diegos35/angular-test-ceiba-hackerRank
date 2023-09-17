@@ -25,6 +25,10 @@
           *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
           The minimum of characters will be 8
         </div>
+        <div id="login__password-error" class="error"
+          *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+          Password is required
+        </div>
       </div>
     </div>
     <button id="login__btn-login" type="submit">Iniciar Sesión</button>
