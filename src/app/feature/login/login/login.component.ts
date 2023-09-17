@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit{
           this.redirectUsers();
         }
       }else{
-        this.loginForm.markAllAsTouched();
+        this.loginForm.markAllAsTouched()
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
