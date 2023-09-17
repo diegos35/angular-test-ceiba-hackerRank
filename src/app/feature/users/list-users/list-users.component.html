@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of userList | filterUserByName: searchQuery; let i = index" id="user-list__table-item-{{i}}">
-          <td id="user-list__table-item-{{id}}-first_name">{{ user.first_name }}</td>
+          <td id="user-list__table-item-{{i}}-first_name">{{ user.first_name }}</td>
           <td id="user-list__table-item-{{i}}-email">{{ user.email }}</td>
           <td>
             <img [src]="user.avatar" alt="Avatar" id="user-list__table-item-{{i}}-avatar" />
