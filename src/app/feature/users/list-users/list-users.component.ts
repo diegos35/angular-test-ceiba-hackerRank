@@ -19,11 +19,7 @@ export class ListUsersComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
-    try {
-      this.userList = await this.userService.getUsers();
-    } catch (error) {
-      console.error('Error al cargar la lista de usuarios en ngOnInit', error);
-    }
+    await this.loadUserList();
   }
 
 
@@ -31,22 +27,11 @@ export class ListUsersComponent implements OnInit {
   async loadUserList(): Promise<void> {
     try {
       const res = await this.userService.getUsers();
-      const { data } = res;
-      this.userList = data;
+      this.userList = res;
     } catch (err) {
       console.error('Error al cargar la lista de usuarios', err);
     }
   }
-  /* loadUserList(): void {
-    this.userService.getUsers().subscribe({
-      next: (res: any) => {
-        const { data } = res;
-        this.userList = data;
-      },
-          error: (err) => console.error('Error al cargar la lista de usuarios', err),
-    });
-  } */
-
 
   deleteUser(index: number): void {
     console.log(this.userList[index].id)
@@ -60,18 +45,19 @@ export class ListUsersComponent implements OnInit {
 
 
   filterUsers() {
-   if (this.searchQuery) {
-    const query = this.searchQuery.toLowerCase();
-    this.userList = this.userList.filter(user => {
-      const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
-      return fullName.includes(query) || user.email.toLowerCase().includes(query);
-    });
-  } else {
-    this.loadUserList();
+    if (this.searchQuery.length >= 3) {
+      console.log(this.searchQuery)
+      const query = this.searchQuery.toLowerCase();
+      if (this.userList) {
+        this.userList = this.userList.filter(user => {
+          const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
+          return fullName.includes(query) || user.email.toLowerCase().includes(query);
+        });
+      }
+    }else{
+      this.loadUserList();
+    }
   }
-  }
-
-
 
 
 }

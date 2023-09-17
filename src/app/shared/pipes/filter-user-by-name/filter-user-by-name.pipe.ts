@@ -6,8 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterUserByNamePipe implements PipeTransform {
 
   transform(items: any[], searchText: string): any[] {
-    if (!items) return [];
-    if (!searchText) return items;
+    if (!items || !searchText || searchText.length < 3) {
+      return items;
+    }
 
     searchText = searchText.toLowerCase();
 
@@ -16,5 +17,4 @@ export class FilterUserByNamePipe implements PipeTransform {
       return fullName.includes(searchText);
     });
   }
-
 }

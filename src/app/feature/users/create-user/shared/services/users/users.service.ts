@@ -16,9 +16,7 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
 
-  /* getUsers():Observable<any> {
-    return this.http.get<any>(this.apiUrl+'/?page=2');
-  } */
+
   getUsers(): Promise<any> {
     return this.http
       .get<any>(`${this.apiUrl}/?page=2`)

@@ -9,6 +9,7 @@ import { HomeUserComponent } from './home-user/home-user.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { UsersService } from './create-user/shared/services/users/users.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { UsersService } from './create-user/shared/services/users/users.service'
     CommonModule,
     FormsModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
 
   ],
   providers: [
