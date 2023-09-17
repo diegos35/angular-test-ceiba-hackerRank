@@ -16,8 +16,18 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
 
-  getUsers():Observable<any> {
+  /* getUsers():Observable<any> {
     return this.http.get<any>(this.apiUrl+'/?page=2');
+  } */
+  getUsers(): Promise<any> {
+    return this.http
+      .get<any>(`${this.apiUrl}/?page=2`)
+      .toPromise()
+      .then((response) => response.data)
+      .catch((error) => {
+        console.error('Error al obtener la lista de usuarios', error);
+        throw error; // Opcional: relanza el error para que el componente pueda manejarlo
+      });
   }
 
   createUser() {

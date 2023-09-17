@@ -17,11 +17,25 @@ export class ListUsersComponent implements OnInit {
 
   constructor(private userService: UsersService) {}
 
-  ngOnInit(): void {
-    this.loadUserList();
+  async ngOnInit(): Promise<void> {
+    try {
+      await this.loadUserList();
+    } catch (err) {
+      console.error('Error al cargar la lista de usuarios en ngOnInit', err);
+    }
   }
 
-  loadUserList(): void {
+
+  async loadUserList(): Promise<void> {
+    try {
+      const res = await this.userService.getUsers();
+      const { data } = res;
+      this.userList = data;
+    } catch (err) {
+      console.error('Error al cargar la lista de usuarios', err);
+    }
+  }
+  /* loadUserList(): void {
     this.userService.getUsers().subscribe({
       next: (res: any) => {
         const { data } = res;
@@ -29,7 +43,7 @@ export class ListUsersComponent implements OnInit {
       },
           error: (err) => console.error('Error al cargar la lista de usuarios', err),
     });
-  }
+  } */
 
 
   deleteUser(index: number): void {
