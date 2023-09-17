@@ -8,6 +8,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeUserComponent } from './home-user/home-user.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '@shared/shared.module';
+import { UsersService } from './create-user/shared/services/users/users.service';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SharedModule } from '@shared/shared.module';
 
   ],
   providers: [
+    UsersService
   ]
 })
 export class UsersModule {

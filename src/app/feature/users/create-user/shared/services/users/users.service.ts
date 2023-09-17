@@ -16,8 +16,8 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
 
-  getUsers():Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl+'/?page=2');
+  getUsers():Observable<any> {
+    return this.http.get<any>(this.apiUrl+'/?page=2');
   }
 
   createUser() {
