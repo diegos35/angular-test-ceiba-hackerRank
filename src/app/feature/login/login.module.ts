@@ -7,6 +7,8 @@ import { LoginRoutingModule } from './login-routing.module';
 import {  HttpClientModule } from '@angular/common/http';
 import { TokenGuard } from '@core/guard/token/token.guard';
 import { LoginService } from './shared/services/login/login.service';
+import { SharedModule } from '@shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { LoginService } from './shared/services/login/login.service';
     FormsModule,
     LoginRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    RouterModule,
   ],
   providers: [
     TokenGuard,

@@ -35,11 +35,10 @@ export class LoginComponent implements OnInit{
   async onSubmit(): Promise<void> {
     try {
       if (this.loginForm.valid) {
-        const {token} = await this.loginService.login(this.loginForm.get('email').value,this.loginForm.get('password').value);
+        const { email, password } = this.loginForm.value;
+        const {token} = await this.loginService.login(email,password);
         localStorage.setItem('token', token);
-        if (localStorage.getItem('token')) {
           this.redirectUsers();
-        }
       }else{
         this.loginForm.markAllAsTouched()
       }
