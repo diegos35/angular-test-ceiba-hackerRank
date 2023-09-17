@@ -14,7 +14,12 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('nab')
+  }
+
+  change(){
+    console.log('entra')
+    this.router.navigate(['users/list']);
+
   }
 
   /**

@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 
 /**
  * El nombre de las clases o métodos no se pueden cambiar
@@ -8,9 +11,13 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
 
-  
-  getUsers() {
+  private apiUrl = 'https://reqres.in/api/users';
 
+  constructor(private http: HttpClient) {}
+
+
+  getUsers():Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl+'/?page=2');
   }
 
   createUser() {
@@ -18,6 +25,7 @@ export class UsersService {
   }
 
   deleteUserForIndex(index: number) {
-
+    const url = `${this.apiUrl}/${index}`;
+    return this.http.delete<void>(url);
   }
 }

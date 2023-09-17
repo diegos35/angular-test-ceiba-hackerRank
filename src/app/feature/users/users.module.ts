@@ -6,6 +6,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeUserComponent } from './home-user/home-user.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +19,10 @@ import { HomeUserComponent } from './home-user/home-user.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    UsersRoutingModule,
+    SharedModule
+
   ],
   providers: [
   ]
