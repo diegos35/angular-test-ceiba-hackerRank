@@ -34,10 +34,14 @@ export class LoginComponent implements OnInit{
 
   async onSubmit(): Promise<void> {
     try {
-      const {token} = await this.loginService.login(this.loginForm.get('email').value,this.loginForm.get('password').value);
-      localStorage.setItem('token', token);
-      if (localStorage.getItem('token')) {
-        this.redirectUsers();
+      if (this.loginForm.valid) {
+        const {token} = await this.loginService.login(this.loginForm.get('email').value,this.loginForm.get('password').value);
+        localStorage.setItem('token', token);
+        if (localStorage.getItem('token')) {
+          this.redirectUsers();
+        }
+      }else{
+        this.loginForm.markAllAsTouched();
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
