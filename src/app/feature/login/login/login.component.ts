@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit{
       const { email, password } = this.user;
       const {token} = await this.loginService.login(email, password);
       localStorage.setItem('token', token);
-      this.redirectPage();
+      if (localStorage.getItem('token')) {
+        this.redirectUsers();
+      }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
     }
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit{
   /**
    * Este método no se puede modificar
    * */
-  public redirectPage(): void {
+  public redirectUsers(): void {
     this.router.navigateByUrl('/users/list');
   }
 
