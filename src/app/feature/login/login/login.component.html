@@ -26,7 +26,7 @@
           The minimum of characters will be 8
         </div>
         <div id="login__password-error" class="error"
-          *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+        *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').dirty || loginForm.get('password').touched)">
           Password is required
         </div>
       </div>
