@@ -26,8 +26,8 @@ export class ListUsersComponent implements OnInit {
 
   async loadUserList(): Promise<void> {
     try {
-      const res = await this.userService.getUsers();
-      this.userList = res;
+      const {data} = await this.userService.getUsers();
+      this.userList = data;
     } catch (err) {
       console.error('Error al cargar la lista de usuarios', err);
     }
