@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ListUsersComponent } from './list-users/list-users.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     UsersRoutingModule,
     SharedModule,
-
+    ReactiveFormsModule
   ],
   providers: [
     UsersService

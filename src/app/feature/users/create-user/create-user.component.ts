@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +9,21 @@ import { Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
+
+  createUserForm!: FormGroup;
+
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly fb: FormBuilder,
   ) {
+    this.createUserForm =   this.fb.group({
+      name: ['', [Validators.required]],
+      job: ['', [Validators.required]],
+    });
   }
+
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   /**
@@ -21,5 +31,9 @@ export class CreateUserComponent implements OnInit {
    * */
   public redirectToListUsers(): void {
     this.router.navigateByUrl('/users/list');
+  }
+
+  createUser(){
+    console.log('as')
   }
 }
