@@ -28,8 +28,14 @@ export class UsersService {
       });
   }
 
-  createUser() {
+  createUser(name: string, job: string): Promise<any> {
+    const user = {
+      name: name,
+      job: job,
+    };
 
+    return this.http.post<any>(this.apiUrl, user).toPromise()
+    .then((response) => response);
   }
 
   deleteUserForIndex(index: number):Promise<any> {
