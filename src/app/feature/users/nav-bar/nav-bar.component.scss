@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+
+  .inline-flex {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #555;
+    }
+
+    &.danger {
+      background-color: #ff5252;
+    }
+
+    &.outlined {
+      border: 1px solid white;
+      background-color: transparent;
+      color: white;
+    }
+
+    &.mb-6 {
+      margin-bottom: 6px;
+    }
+
+    &.ml-9 {
+      margin-left: 9px;
+    }
+
+    &.mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.w-50 {
+      width: 50%;
+    }
+
+    &.pt-5 {
+      padding-top: 5px;
+    }
+
+    &.pa-30 {
+      padding: 30px;
+    }
+  }
+}
