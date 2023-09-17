@@ -32,29 +32,24 @@ export class LoginComponent implements OnInit{
     const { required } = Validators;
 
     return this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      email: ['', [required, Validators.email]],
+      password: ['', [required, Validators.minLength(8)]],
     });
   }
 
 
-  onSubmit(): void {
-    const { email, password } = this.user;
-
-    if (!email || !password) {
-      console.error('El correo y la contraseña son requeridos.');
-      return;
-    }
-
-    this.loginService.login(email, password).subscribe(
-      (response: any) => {
+  async onSubmit(): Promise<void> {
+    try {
+      const { email, password } = this.user;
+      const response = await this.loginService.login(email, password);
+      if (response && response.token) {
         this.redirectUsers();
-      },
-      (error) => {
-        console.error('Error en la solicitud:', error);
       }
-    );
+    } catch (error) {
+      console.error('Error en el inicio de sesión', error);
+    }
   }
+
 
   /**
    * Este método no se puede modificar
