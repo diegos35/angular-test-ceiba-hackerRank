@@ -21,13 +21,14 @@
       <div class="flex">
         <input type="password" id="login__password" formControlName="password" required
           minlength="8" />
-        <div id="login__password-error" class="error"
-          *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty)">
-          The minimum of characters will be 8
-        </div>
-        <div id="login__password-error" class="error"
-        *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-          Password is required
+        <div id="login__password-error" class="error">
+          <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty)">
+            The minimum of characters will be 8
+          </div>
+          <div
+            *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            Password is required
+          </div>
         </div>
       </div>
     </div>
