@@ -52,8 +52,9 @@ export class LoginComponent implements OnInit{
    * Este método no se puede modificar
    * */
   public redirectUsers(): void {
+    console.log(localStorage.getItem('token'))
     if(localStorage.getItem('token')) {
-      this.router.navigateByUrl('/users/list');
+      this.router.navigateByUrl('/users');
     }
   }
 

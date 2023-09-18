@@ -34,6 +34,7 @@ interface LoginResponse {
       return  this.http
         .post<any>(this.apiUrl, loginData)
         .toPromise()
+        .then((response) => response)
         .catch((error) => {
           console.error('Error en el servicio de login', error);
           throw error;
