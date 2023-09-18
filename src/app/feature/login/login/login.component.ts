@@ -38,24 +38,22 @@ export class LoginComponent implements OnInit{
         const { email, password } = await this.loginForm.value;
         const {token} = await this.loginService.login(email,password);
         localStorage.setItem('token', token);
-        this.redirectUsers();
+
       }else{
         this.loginForm.markAllAsTouched()
       }
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
     }
+    this.redirectUsers();
   }
 
 
   /**
    * Este método no se puede modificar
    * */
-  public redirectUsers(): void {
-    console.log(localStorage.getItem('token'))
-    if(localStorage.getItem('token')) {
-      this.router.navigateByUrl('/users');
+    public redirectUsers(): void {
+      this.router.navigateByUrl('users');
     }
-  }
 
 }
