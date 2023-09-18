@@ -37,10 +37,14 @@ export class UsersService {
     return this.http.post<any>(this.apiUrl, user).toPromise()
     .then((response) => response);
   }
-
-  deleteUserForIndex(index: number):Promise<any> {
+  async deleteUserForIndex(index: number): Promise<void> {
     const url = `${this.apiUrl}/${index}`;
-    return this.http.delete<void>(url).toPromise()
-    .then((response) => response);
+
+    try {
+      await this.http.delete(url).toPromise();
+    } catch (error) {
+      console.error('Error al eliminar el usuario', error);
+      throw error;
+    }
   }
 }
