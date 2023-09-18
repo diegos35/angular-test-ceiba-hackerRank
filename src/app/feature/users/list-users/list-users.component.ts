@@ -51,9 +51,12 @@ export class ListUsersComponent implements OnInit {
   async deleteUser(index: number): Promise<void> {
     try {
       const userId = this.userList[index].id;
+      const confirmation = confirm('¿Seguro que deseas eliminar este usuario?');
 
+      if (confirmation) {
         await this.userService.deleteUserForIndex(userId);
         this.userList.splice(index, 1);
+      }
     } catch (error) {
       console.error('Error al eliminar el usuario', error);
     }
