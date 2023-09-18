@@ -17,7 +17,7 @@ import { LoginService } from '@feature/login/shared/services/login/login.service
     if (token) {
       return true;
     }
-    return this.router.createUrlTree(['/login']);
+    return this.router.navigate(['/login']);
     return false;
     }
 
