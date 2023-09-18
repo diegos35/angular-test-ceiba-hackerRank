@@ -37,8 +37,7 @@ export class LoginComponent implements OnInit{
       if (this.loginForm.valid) {
         const { email, password } = await this.loginForm.value;
         const {token} = await this.loginService.login(email,password);
-          localStorage.setItem('token', token);
-          this.redirectUsers();
+          this.redirectUsers(token);
       }else{
         this.loginForm.markAllAsTouched()
       }
@@ -51,7 +50,8 @@ export class LoginComponent implements OnInit{
   /**
    * Este método no se puede modificar
    * */
-    public redirectUsers(): any {
+    public redirectUsers(token: string): void {
+      localStorage.setItem('token', token);
       this.router.navigate(['users']);
     }
 
