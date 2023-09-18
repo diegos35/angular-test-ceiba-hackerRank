@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
       if (this.loginForm.valid) {
         const { email, password } = await this.loginForm.value;
         const {token} = await this.loginService.login(email,password);
-          //localStorage.setItem('token', token);
+          localStorage.setItem('token', token);
           this.redirectUsers();
       }else{
         this.loginForm.markAllAsTouched()
