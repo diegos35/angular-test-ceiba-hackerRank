@@ -25,28 +25,20 @@ interface LoginResponse {
     /**
      * El nombre de este metodo no debería ser cambiado, pero de ser necesario podrías cambiar la firma
      * */
-    login(email: string, password: string): Promise<void> {
+    login(email: string, password: string): Promise<{ token: string }> {
       const loginData = {
         email: email,
         password: password,
       };
 
-      return this.http
-      .post<any>(this.apiUrl, loginData)
-      .toPromise()
-      .then((response) => {
-        if (response && response.token) {
-          // Guarda el token en el localStorage
-          localStorage.setItem('token', response.token);
-        } else {
-          console.error('Respuesta de inicio de sesión inválida');
-          throw new Error('Respuesta de inicio de sesión inválida');
-        }
-      })
-      .catch((error) => {
-        console.error('Error en el servicio de login', error);
-        throw error;
-      });
+      return  this.http
+        .post<any>(this.apiUrl, loginData)
+        .toPromise()
+        .then((response) => response)
+        .catch((error) => {
+          console.error('Error en el servicio de login', error);
+          throw error;
+        });
     }
 
 
