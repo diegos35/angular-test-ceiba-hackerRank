@@ -19,7 +19,7 @@ export class ListUsersComponent implements OnInit {
 
 
   async ngOnInit(): Promise<void> {
-    await this.loadUserList();
+    await  this.loadUserList();
   }
 
 
@@ -32,7 +32,7 @@ export class ListUsersComponent implements OnInit {
       console.error('Error al cargar la lista de usuarios', err);
     }
   }
-
+/*
   async deleteUser(index: number): Promise<void> {
     try {
       const userId = this.userList[index].id;
@@ -43,6 +43,17 @@ export class ListUsersComponent implements OnInit {
         this.userList.splice(index, 1); // Elimina el usuario de la lista local
         alert('Usuario eliminado correctamente');
       }
+    } catch (error) {
+      console.error('Error al eliminar el usuario', error);
+    }
+  } */
+
+  async deleteUser(index: number): Promise<void> {
+    try {
+      const userId = this.userList[index].id;
+
+        await this.userService.deleteUserForIndex(userId);
+        this.userList.splice(index, 1);
     } catch (error) {
       console.error('Error al eliminar el usuario', error);
     }
