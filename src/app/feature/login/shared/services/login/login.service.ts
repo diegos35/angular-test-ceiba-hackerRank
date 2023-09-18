@@ -25,20 +25,19 @@ interface LoginResponse {
     /**
      * El nombre de este metodo no debería ser cambiado, pero de ser necesario podrías cambiar la firma
      * */
-    async login(email: string, password: string): Promise<{ token: string }> {
+    login(email: string, password: string): Promise<{ token: string }> {
       const loginData = {
         email: email,
         password: password,
       };
 
-      const response = await this.http
+      return  this.http
         .post<any>(this.apiUrl, loginData)
         .toPromise()
         .catch((error) => {
           console.error('Error en el servicio de login', error);
           throw error;
         });
-        return response;
     }
 
 

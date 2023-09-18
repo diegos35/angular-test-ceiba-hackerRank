@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit{
   async onSubmit(): Promise<void> {
     try {
       if (this.loginForm.valid) {
-        const { email, password } = this.loginForm.value;
+        const { email, password } = await this.loginForm.value;
         const {token} = await this.loginService.login(email,password);
         localStorage.setItem('token', token);
-          this.redirectUsers();
+        this.redirectUsers();
       }else{
         this.loginForm.markAllAsTouched()
       }
@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit{
    * Este método no se puede modificar
    * */
   public redirectUsers(): void {
-    this.router.navigateByUrl('/users/list');
+    if(localStorage.getItem('token')) {
+      this.router.navigateByUrl('/users/list');
+    }
   }
 
 }
