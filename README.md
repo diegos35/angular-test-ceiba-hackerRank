@@ -12,11 +12,11 @@ password: cityslicka
 ## Application Demo:
 
 
-![](https://imgur.com/2sIVIBk)
-![](https://imgur.com/hoAA0dR)
-![](https://imgur.com/yUzmKwR)
-![](https://imgur.com/VI52MF9)
-
+![](https://i.imgur.com/2sIVIBk.png)
+![](https://i.imgur.com/hoAA0dR.png)
+![](https://i.imgur.com/yUzmKwR.png)
+![](https://i.imgur.com/VI52MF9.png  )
+[Imgur](https://i.imgur.com/VI52MF9.png)
 
 ## Functionality Requirements
 
