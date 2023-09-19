@@ -5,10 +5,18 @@
 - Angular Core Version: 10.0.4
 - Node Version: 12(LTS)
 - Default Port: 8000
+## Login
+admin: eve.holt@reqres.in
+password: cityslicka
 
 ## Application Demo:
 
-![](https://hrcdn.net/s3_pub/istreet-assets/HnPUXnW8Mhml5W2AHvkNKQ/customer-list.gif)
+
+![](https://imgur.com/2sIVIBk)
+![](https://imgur.com/hoAA0dR)
+![](https://imgur.com/yUzmKwR)
+![](https://imgur.com/VI52MF9)
+
 
 ## Functionality Requirements
 
